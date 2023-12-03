@@ -1,0 +1,130 @@
+
+This Is a JSON Formate For Design database for Zen class programme;
+
+
+{
+  "_id": {
+    "$oid": "656c3bfb1b07925c29aa417d"
+  },
+  "users": [
+    {
+      "user_id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "student"
+    },
+    {
+      "user_id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "role": "mentor"
+    }
+  ],
+  "codekata": [
+    {
+      "codekata_id": 1,
+      "title": "Introduction to Algorithms",
+      "description": "Learn the fundamentals of algorithms",
+      "difficulty": "Beginner"
+    },
+    {
+      "codekata_id": 2,
+      "title": "Data Structures in Python",
+      "description": "Explore various data structures using Python",
+      "difficulty": "Intermediate"
+    }
+  ],
+  "attendance": [
+    {
+      "attendance_id": 1,
+      "user_id": 1,
+      "codekata_id": 1,
+      "date": "2023-01-01",
+      "status": "present"
+    },
+    {
+      "attendance_id": 2,
+      "user_id": 2,
+      "codekata_id": 1,
+      "date": "2023-01-01",
+      "status": "absent"
+    }
+  ],
+  "topics": [
+    {
+      "topic_id": 1,
+      "title": "Introduction to Programming",
+      "description": "Covering basic programming concepts"
+    },
+    {
+      "topic_id": 2,
+      "title": "Web Development Basics",
+      "description": "Understanding HTML, CSS, and JavaScript"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": 1,
+      "user_id": 1,
+      "title": "Complete CodeKata 1",
+      "description": "Solve the algorithm problems in CodeKata 1",
+      "status": "in-progress"
+    },
+    {
+      "task_id": 2,
+      "user_id": 2,
+      "title": "Review CodeKata 1 Submissions",
+      "description": "Provide feedback on CodeKata 1 solutions",
+      "status": "complete"
+    }
+  ],
+  "company_drives": [
+    {
+      "drive_id": 1,
+      "title": "Tech Job Fair",
+      "date": "2023-02-15",
+      "location": "City Convention Center"
+    },
+    {
+      "drive_id": 2,
+      "title": "Software Engineer Recruitment",
+      "date": "2023-03-10",
+      "location": "Tech Park Auditorium"
+    }
+  ],
+  "mentors": [
+    {
+      "mentor_id": 1,
+      "name": "Dr. A. Mentor",
+      "email": "mentor@example.com",
+      "specialization": "Algorithms"
+    },
+    {
+      "mentor_id": 2,
+      "name": "Prof. B. Mentor",
+      "email": "bmentor@example.com",
+      "specialization": "Web Development"
+    }
+  ]
+}
+
+Design database for Zen class programme Below The Answer For That;l
+
+  1, db.user.find({$or: [{"date": {$regex: /^2023-10-/}},{"tasks.date": {$regex: /^2023-10/}}]}, {"topics": 1,"tasks": 1});
+
+  2, db.user.find({"company_drives.date": {$gte: "2020-10-15",$lte: "2020-10-31" } }, {"company_drives": 1});
+
+  3, db.user.aggregate([{$lookup: {from: "attendance",localField: "drive_id", foreignField: "drive_id",as: "drive_attendance"}},]);
+
+  4, db.user.aggregate([{$match: { "tasks.status": "complete" }},{ $group: {_id: "$tasks.user_id", total_problems_solved: { $sum: 1 }}},]);
+
+  5, db.cuser.aggregate([{$lookup: { from: "mentors",localField: "mentor_id",foreignField: "mentor_id"as: "mentee_details" }};
+
+  6, db.collection.aggregate({$lookup: {rom: "tasks" localField: "user_id",foreignField: "user_id",as: "user_tasks"}},]);
+  
+  
+  
+
+  
+  
+  
